@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Password Generator</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <header class="header">
+        <div class="badge">CSPRNG &middot; Python secrets</div>
+        <h1>Random Password Generator</h1>
+        <p class="subtitle">Generate cryptographically secure passwords with customizable rules and live entropy analysis.</p>
+      </header>
+
+      <form id="generator-form" class="controls">
+        <div class="control-row">
+          <div class="control-group">
+            <div class="label-row">
+              <label for="length-range">Password Length</label>
+              <input id="length-number" type="number" min="1" max="128" value="16" aria-label="Password length number" />
+            </div>
+            <input id="length-range" type="range" min="4" max="64" value="16" />
+          </div>
+
+          <div class="control-group count-group">
+            <label for="count-input">Quantity</label>
+            <input id="count-input" type="number" min="1" max="50" value="3" />
+          </div>
+        </div>
+
+        <fieldset class="toggles">
+          <legend>Character Sets</legend>
+          <label class="toggle">
+            <input id="use-upper" type="checkbox" checked />
+            <span>Uppercase <small>A-Z</small></span>
+          </label>
+          <label class="toggle">
+            <input id="use-lower" type="checkbox" checked />
+            <span>Lowercase <small>a-z</small></span>
+          </label>
+          <label class="toggle">
+            <input id="use-digits" type="checkbox" checked />
+            <span>Digits <small>0-9</small></span>
+          </label>
+          <label class="toggle">
+            <input id="use-symbols" type="checkbox" checked />
+            <span>Symbols <small>!@#$</small></span>
+          </label>
+          <label class="toggle toggle-wide">
+            <input id="exclude-ambiguous" type="checkbox" />
+            <span>Exclude ambiguous characters <small>0, O, o, 1, l, I, |</small></span>
+          </label>
+        </fieldset>
+
+        <div class="control-group">
+          <label for="exclude-chars">Exclude Specific Characters (optional)</label>
+          <input id="exclude-chars" type="text" placeholder="e.g. {}[]/\&quot;" autocomplete="off" />
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="generate-btn" class="btn-primary">Generate Passwords</button>
+          <button type="button" id="copy-all-btn" class="btn-secondary">Copy All</button>
+        </div>
+      </form>
+
+      <div id="error-banner" class="error-banner" role="alert" hidden></div>
+
+      <section class="results-section" aria-live="polite">
+        <div class="results-header">
+          <h2>Generated Passwords</h2>
+          <span id="results-meta" class="results-meta"></span>
+        </div>
+        <ul id="password-list" class="password-list"></ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -15,6 +15,14 @@ A cryptographically secure random password generator written in Python using the
 
 ## Usage
 
+### Web Frontend
+
+Start the local web server and open `http://127.0.0.1:8000` in your browser:
+
+```bash
+python server.py
+```
+
 ### Command Line
 
 Generate a default 16-character password:
